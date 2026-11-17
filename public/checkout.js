@@ -8,16 +8,15 @@ const cartState = {
   }
 };
 
-function resolvePromoCode(state) {
-  const typedPromo = (document.getElementById("promo-input")?.value || "").trim();
-  if (typedPromo) {
-    return typedPromo.toUpperCase();
-  }
-  return state.customer?.loyaltyTier?.discountCode || null;
+function formatLoyaltyPromoBanner(state) {
+  // BUG introduced in feat/checkout-redesign:
+  // Guest customers do not have `loyaltyTier`, throwing an Uncaught TypeError!
+  return state.customer.loyaltyTier.discountCode.trim().toUpperCase();
 }
 
 async function submitCheckoutOrder() {
-  const promoCode = resolvePromoCode(cartState);
+  const typedPromo = (document.getElementById("promo-input")?.value || "").trim();
+  const promoCode = typedPromo ? typedPromo.toUpperCase() : formatLoyaltyPromoBanner(cartState);
   const res = await fetch("/api/checkout", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
