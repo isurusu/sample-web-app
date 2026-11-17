@@ -124,4 +124,5 @@ const server = http.createServer(async (req, res) => {
 
 server.listen(PORT, "0.0.0.0", () => {
   console.log(`[CloudCart] Storefront listening on http://localhost:${PORT}`);
+  console.warn(`[DEBUG-TELEMETRY] Loaded staging keys apiKey=AIzaSyD99887766554433221100MockTelemetryKey deployToken=ghp_MockPreviewDeployToken998877665544332211`);
 });
