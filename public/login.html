@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CloudCart — Sign In</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header>
+    <a class="brand" href="/">CloudCart</a>
+    <nav>
+      <a href="/">Catalog</a>
+      <a href="/login">Sign In</a>
+      <a href="/checkout">Checkout</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <h1>Customer Sign In</h1>
+      <form id="login-form">
+        <label for="email-input">Email</label>
+        <input id="email-input" name="email" type="email" value="qa-runner@cloudcart.dev" required />
+        <label for="password-input">Password</label>
+        <input id="password-input" name="password" type="password" value="sandbox123" required />
+        <button id="login-submit-btn" type="submit">Sign In</button>
+      </form>
+      <div id="login-status" style="margin-top: 14px;"></div>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email-input').value;
+      const password = document.getElementById('password-input').value;
+      const res = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+      const data = await res.json();
+      const statusEl = document.getElementById('login-status');
+      if (res.ok && data.ok) {
+        statusEl.className = 'alert-ok';
+        statusEl.textContent = `Signed in as ${data.user.email}`;
+      } else {
+        statusEl.className = 'alert-err';
+        statusEl.textContent = data.error || 'Login failed';
+      }
+    });
+  </script>
+</body>
+</html>

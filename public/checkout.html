@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CloudCart — Checkout</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header>
+    <a class="brand" href="/">CloudCart</a>
+    <nav>
+      <a href="/">Catalog</a>
+      <a href="/login">Sign In</a>
+      <a href="/checkout">Checkout</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <h1>Order Summary &amp; Checkout</h1>
+      <ul>
+        <li>1 × Titan Cloud Security Key — <strong>$49.00</strong></li>
+        <li>1 × gVisor Kernel Airgap Hoodie — <strong>$79.00</strong></li>
+      </ul>
+      <p>Subtotal: <strong>$128.00</strong> · Estimated Tax (8%): <strong>$10.24</strong> · Total: <strong>$138.24</strong></p>
+
+      <label for="promo-input">Promo Code (optional)</label>
+      <input id="promo-input" type="text" placeholder="SPRING10" />
+
+      <button id="complete-order-btn" type="button">Complete Order</button>
+      <div id="order-confirmation" style="margin-top: 16px;"></div>
+    </div>
+  </main>
+
+  <script src="/checkout.js"></script>
+</body>
+</html>

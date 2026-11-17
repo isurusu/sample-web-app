@@ -1,0 +1,14 @@
+{
+  "name": "cloudcart-sample-web-app",
+  "version": "1.0.0",
+  "description": "CloudCart Mockup E-Commerce Storefront for Autonomous Web App QA Agent testing (GEAP Sandbox + AGY SDK)",
+  "private": false,
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "test": "node --test tests/pricing.test.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

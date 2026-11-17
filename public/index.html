@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CloudCart — Storefront</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header>
+    <a class="brand" href="/">CloudCart</a>
+    <nav>
+      <a href="/">Catalog</a>
+      <a href="/login">Sign In</a>
+      <a href="/checkout">Checkout (<span id="cart-count">2</span>)</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <span class="badge">Zero-Trust Developer Gear</span>
+      <h1>Featured Security Hardware &amp; Apparel</h1>
+      <p>Mockup storefront application used to test Autonomous Web App QA Agents inside GEAP Sandboxes.</p>
+    </div>
+
+    <div class="grid" id="catalog-grid">
+      <div class="card">
+        <h3>Titan Cloud Security Key</h3>
+        <p>$49.00 · Hardware MFA</p>
+        <button type="button" class="add-btn" data-id="sec-key">Add to Cart</button>
+      </div>
+      <div class="card">
+        <h3>gVisor Kernel Airgap Hoodie</h3>
+        <p>$79.00 · Apparel</p>
+        <button type="button" class="add-btn" data-id="gvisor-hoodie">Add to Cart</button>
+      </div>
+      <div class="card">
+        <h3>Zero-Credential Insulated Mug</h3>
+        <p>$24.00 · Gear</p>
+        <button type="button" class="add-btn" data-id="zero-trust-mug">Add to Cart</button>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    let count = 2;
+    document.querySelectorAll('.add-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        count += 1;
+        document.getElementById('cart-count').textContent = String(count);
+        btn.textContent = 'Added!';
+      });
+    });
+  </script>
+</body>
+</html>
